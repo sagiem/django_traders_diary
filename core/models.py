@@ -1,12 +1,14 @@
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 
 class Person(models.Model):
     login = models.CharField(max_length=255, null=False)
     name = models.CharField(max_length=255, null=False)
     surName = models.CharField(max_length=255, null=False)
-    patronymic = models.CharField(max_length=255, null=True)
+    patronymic = models.CharField(max_length=255, null=True, blank=True)
     email = models.CharField(max_length=255, null=False)
-    phone = models.IntegerField(null=False)
+    phone = models.CharField(max_length=50, blank=False)
+    # phone = PhoneNumberField(unique=True, null=False, blank=False)
     registerData = models.DateTimeField(auto_now_add=True)
     catPerson = models.ForeignKey('Category', on_delete=models.PROTECT, null=True)
 
