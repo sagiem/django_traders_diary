@@ -8,3 +8,7 @@ class Person(admin.ModelAdmin):
     list_display = ('login', 'name')
     search_fields = ('login', 'email')
 
+@admin.register(models.Category)
+class Category(admin.ModelAdmin):
+    list_display = ('id', 'name')
+

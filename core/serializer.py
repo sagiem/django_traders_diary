@@ -13,15 +13,35 @@ from core import models
 #         self.email = email
 
 
-class PersonSerializer(serializers.Serializer):
-    login = serializers.CharField(max_length=255)
-    name = serializers.CharField()
-    surName = serializers.CharField()
-    patronymic = serializers.CharField()
-    email = serializers.CharField()
-    phone = serializers.CharField()
-    registerData = serializers.DateTimeField(read_only=True)
-    catPerson = serializers.IntegerField()
+class PersonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Person
+        fields =("__all__")
+
+# class PersonSerializer(serializers.Serializer):
+#     login = serializers.CharField(max_length=255)
+#     name = serializers.CharField()
+#     surName = serializers.CharField()
+#     patronymic = serializers.CharField()
+#     email = serializers.CharField()
+#     phone = serializers.CharField()
+#     registerData = serializers.DateTimeField(read_only=True)
+#     catPerson_id = serializers.IntegerField()
+#
+#     def create(self, validated_data):
+#         return models.Person.objects.create(**validated_data)
+#
+#     def update(self, instance, validated_data):
+#         instance.login = validated_data.get("login", instance.login)
+#         instance.name = validated_data.get("name", instance.name)
+#         instance.surName = validated_data.get("surName", instance.surName)
+#         instance.patronymic = validated_data.get("patronymic)", instance.patronymic)
+#         instance.email = validated_data.get("email", instance.email)
+#         instance.phone = validated_data.get("phone", instance.phone)
+#         instance.registerData = validated_data.get("registerData", instance.registerData)
+#         instance.catPerson_id = validated_data.get("catPerson_id", instance.catPerson_id)
+#         instance.save()
+#         return instance
 
 
 # def encode():
