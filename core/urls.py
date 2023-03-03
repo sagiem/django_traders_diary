@@ -3,8 +3,9 @@ from core import views
 from rest_framework import routers
 
 
-router = routers.SimpleRouter()
+router = routers.DefaultRouter()
 router.register(r'core', views.PersonViewSet)
+print(router.urls)
 
 
 urlpatterns = [
