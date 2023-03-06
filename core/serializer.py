@@ -18,6 +18,12 @@ class PersonSerializer(serializers.ModelSerializer):
         model = models.Person
         fields =("__all__")
 
+class TraderTransactionSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault)
+    class Meta:
+        model = models.TraderTransaction
+        fields = ("__all__")
+
 # class PersonSerializer(serializers.Serializer):
 #     login = serializers.CharField(max_length=255)
 #     name = serializers.CharField()
