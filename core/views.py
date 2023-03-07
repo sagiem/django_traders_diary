@@ -3,7 +3,7 @@ from django.shortcuts import render
 from rest_framework import generics, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated
 
 from core import models
 from core import serializer
@@ -20,7 +20,7 @@ class TraderTransactionAPIList(generics.ListCreateAPIView):
 class TraderTransactionAPTUpdate(generics.RetrieveUpdateAPIView):
     queryset = models.TraderTransaction.objects.all()
     serializer_class = serializer.TraderTransactionSerializer
-    permission_classes = (permissions.IsOwnerOrReadOnly, )
+    permission_classes = (IsAuthenticated, )
 
 
 class TraderTransactionAPIDestroy(generics.RetrieveDestroyAPIView):
