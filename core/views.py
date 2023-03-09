@@ -2,6 +2,7 @@ from django.forms import model_to_dict
 from django.shortcuts import render
 from rest_framework import generics, viewsets
 from rest_framework.decorators import action
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated
 
@@ -11,10 +12,17 @@ from core import permissions
 
 
 
+
+class TraderTransactionAPIListPagination(PageNumberPagination):
+    page_size = 2
+    page_size_query_param = 'page_size'
+    max_page_size = 10000
+
 class TraderTransactionAPIList(generics.ListCreateAPIView):
     queryset = models.TraderTransaction.objects.all()
     serializer_class = serializer.TraderTransactionSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)
+    pagination_class = TraderTransactionAPIListPagination
 
 
 class TraderTransactionAPTUpdate(generics.RetrieveUpdateAPIView):
