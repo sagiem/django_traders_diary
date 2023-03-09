@@ -2,3 +2,5 @@ Django==4.1.7
 # django-phonenumber-field==7.0.2
 djangorestframework==3.14
 # pytest==7.2.2
+djoser
+djangorestframework-simplejwt
