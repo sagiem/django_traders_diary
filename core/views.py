@@ -11,12 +11,11 @@ from core import serializer
 from core import permissions
 
 
-
-
 class TraderTransactionAPIListPagination(PageNumberPagination):
     page_size = 2
     page_size_query_param = 'page_size'
     max_page_size = 10000
+
 
 class TraderTransactionAPIList(generics.ListCreateAPIView):
     queryset = models.TraderTransaction.objects.all()
@@ -28,13 +27,13 @@ class TraderTransactionAPIList(generics.ListCreateAPIView):
 class TraderTransactionAPTUpdate(generics.RetrieveUpdateAPIView):
     queryset = models.TraderTransaction.objects.all()
     serializer_class = serializer.TraderTransactionSerializer
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated,)
 
 
 class TraderTransactionAPIDestroy(generics.RetrieveDestroyAPIView):
     queryset = models.TraderTransaction.objects.all()
     serializer_class = serializer.TraderTransactionSerializer
-    permission_classes = (permissions.IsAdminOrReadOnly, )
+    permission_classes = (permissions.IsAdminOrReadOnly,)
 
 # class PersonViewSet(viewsets.ModelViewSet):
 #     queryset = models.Person.objects.all()
