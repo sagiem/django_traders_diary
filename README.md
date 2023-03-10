@@ -1,1 +1,1 @@
-# django_traders_diary
+# Traders diary
